@@ -1,0 +1,45 @@
+#title{
+    padding: 20px;
+    background-color: skyblue;
+    color: white;
+    width: 350px;
+
+}
+
+#instructions {
+    padding: 20px;
+    background-color: blue;
+    color: white;
+    width: 350px;
+    
+    
+}
+
+#computerInt{
+    padding: 20px;
+    background-color: lightblue;;
+    color: white;
+    width: 250px;
+    font-size: 48px;
+    
+    float: left; 
+       
+}
+
+#winsAndLosses{
+    padding: 20px;
+    background-color: lightskyblue;
+    color: white;
+    font-size: 24px;
+    width: 250px;
+    margin-left: 25%;
+    
+    
+}
+
+#totalScore{
+    padding: 20px;
+    background-color: rgb(74, 134, 161);
+    color: white;
+    width: 250px;
+}

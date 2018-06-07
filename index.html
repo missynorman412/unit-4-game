@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crystal Game</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+        <body background="images/background.jpg">
+
+    <div id="title">Crystals Game</div>
+    <div id="instructions"></div>
+
+
+
+    <div id="computerInt"></div>
+    <div id="winsAndLosses"></div>
+
+    <div id="crystalImages">
+        <img src="images/crystal1.jpg" id="first" height="100" width=100 alt="Crystal One">
+        <img src="images/crystal2.jpg" id="second" height="100" width=100 alt="Crystal Two">
+        <img src="images/crystal3.jpg" id="third" height="100" width=100 alt="Crystal Three">
+        <img src="images/crystal4.png" id="fourth" height="100" width=100 alt="Crystal Four">
+    </div>
+
+    <div id="totalScore"></div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            //vars
+            var computerVal = 0;
+            var crystal1 = 0;
+            var crystal2 = 0;
+            var crystal3 = 0;
+            var crystal4 = 0;
+            var wins = 0;
+            var losses = 0;
+            var guesses = 0;
+            //add instrucations
+            html = ("How to play <br><br>You will be given a random number to guess at the start of the game.<br><br>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score. <br><br> You win the game by matching your total score to the number to guess. You lose the game if your total score goes above he random number. <br><br>The value of each crystal is hidden from you until you click on it.<br><br>Each time the game starts, the values on the crystals change too!</p>");
+            $("#instructions").html(html);
+            start();
+            
+            function start() {
+
+                //initialize random values to variables
+                computerVal = Math.floor(Math.random() * 101) + 18;
+                //put the computer's value into div
+                $("#computerInt").text(computerVal);
+                crystal1 = Math.floor(Math.random() * 12) + 1;
+                crystal2 = Math.floor(Math.random() * 12) + 1;
+                crystal3 = Math.floor(Math.random() * 12) + 1;
+                crystal4 = Math.floor(Math.random() * 12) + 1;
+                guesses = 0;
+                html = ("Wins: " + wins + "<br>" + "Losses: " + losses);
+                $("#totalScore").text("Total Score: " + guesses);
+                $("#winsAndLosses").html(html);
+            }
+
+            function processGuesses() {
+                if (guesses === computerVal) {
+                    wins++;
+                    alert("You won.");
+                    start();
+                }
+                if (guesses > computerVal) {
+                    losses++;
+                    alert("You lost.");
+                    start();
+                }
+            }
+
+            $("#first").on("click", function () {
+                guesses = guesses + crystal1;
+                //add new total
+                $("#totalScore").text("Total Score: " + guesses);
+                processGuesses();
+            });
+            $("#second").on("click", function () {
+                guesses = guesses + crystal2;
+                //add new total
+                $("#totalScore").text("Total Score: " + guesses);
+                processGuesses();
+            });
+            $("#third").on("click", function () {
+                guesses = guesses + crystal3;
+                //add new total
+                $("#totalScore").text("Total Score: " + guesses);
+                processGuesses();
+            });
+            $("#fourth").on("click", function () {
+                guesses = guesses + crystal4;
+                //add new total
+                $("#totalScore").text("Total Score: " + guesses);
+                processGuesses();
+            });
+        }
+);            
+
+
+    </script>
+</body>
